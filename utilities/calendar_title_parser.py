@@ -9,4 +9,4 @@ class CalendarTitleParser(object):
     @staticmethod
     def clean_up_calendar_title(title : str):
         #yes, yes, this is not optimal :D
-        return re.sub(r"[0-9]", '', re.sub('for','за', title)).rstrip(' ')
+        return re.sub('for.+','', title).rstrip(' ')

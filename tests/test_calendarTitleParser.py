@@ -7,4 +7,4 @@ class TestCalendarTitleParser(TestCase):
         self.assertTrue(CalendarTitleParser.calendar_title_should_be_changed('Зелен офис for Андрей 0000'))
 
     def test_clean_up_calendar_title(self):
-        self.assertEquals(CalendarTitleParser.clean_up_calendar_title('Зелен офис for Андрей 0000'), 'Зелен офис за Андрей')
+        self.assertEquals(CalendarTitleParser.clean_up_calendar_title('Зелен офис for Андрей 0000'), 'Зелен офис')
