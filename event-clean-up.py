@@ -15,7 +15,7 @@ parser.add_argument('-c', '--create-credentials', dest='create_credentials',
                     help='Use client secret generated from your Google Project to obtain service credentials')
 
 args = parser.parse_args()
-store = file.Storage('credentials/google-service-account.json')
+store = file.Storage('credentials/oogle-service-account.json')
 SCOPES = 'https://www.googleapis.com/auth/calendar'
 
 
@@ -36,8 +36,11 @@ service = build('calendar', 'v3', http=creds.authorize(Http()))
 
 # Call the Calendar API
 now = datetime.datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
+
+before = datetime.datetime.utcnow() + datetime.timedelta(days=-220)
+before=before.isoformat() + 'Z'  # 'Z' indicates UTC time
 print('Setting events visivility to public')
-events_result = service.events().list(calendarId='primary', timeMin=now,
+events_result = service.events().list(calendarId='primary', timeMin=before,
                                       maxResults=100,
                                       singleEvents=True).execute()
 events = events_result.get('items', [])
